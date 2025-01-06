@@ -21,14 +21,14 @@ export const getContacts = async ({
     .merge(contactsQuery)
     .countDocuments();
 
-  const items = await contactsQuery
+  const data = await contactsQuery
     .skip(skip)
     .limit(limit)
     .sort({ [sortBy]: sortOrder });
 
   const paginationData = calcPaginationData({ total, page, perPage });
   return {
-    items,
+    data,
     ...paginationData,
   };
 };
