@@ -1,4 +1,4 @@
-import * as contactServices from '../services/contacts-services.js';
+import * as contactServices from '../services/contacts.js';
 import createHttpError from 'http-errors';
 import { parsePaginationParams } from '../utils/parsePaginationParams.js';
 import { parseSortParams } from '../utils/parseSortParams.js';

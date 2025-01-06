@@ -3,7 +3,7 @@ import cors from 'cors';
 
 import { getEnvVar } from './utils/getEnvVar.js';
 
-import contactsRouter from './routes/contacts-routers.js';
+import contactsRouter from './routes/contacts.js';
 import authRouter from './routes/auth.js';
 
 import { logger } from './middlewares/logger.js';
