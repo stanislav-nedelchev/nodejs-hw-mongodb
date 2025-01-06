@@ -2,7 +2,7 @@ import * as contactServices from '../services/contacts-services.js';
 import createHttpError from 'http-errors';
 import { parsePaginationParams } from '../utils/parsePaginationParams.js';
 import { parseSortParams } from '../utils/parseSortParams.js';
-import { sortByList } from '../db/models/Contacts.js';
+import { sortByList } from '../db/models/Contact.js';
 import { parseContactsFilterParams } from '../utils/filters/parseContactsFilterParams.js';
 
 export const getContactsController = async (req, res) => {
