@@ -1,9 +1,12 @@
 import express from 'express';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 import { getEnvVar } from './utils/getEnvVar.js';
 
-import contactsRouter from './routes/contacts-routers.js';
+import contactsRouter from './routes/contacts.js';
+import authRouter from './routes/auth.js';
+
 import { logger } from './middlewares/logger.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
@@ -12,9 +15,10 @@ export const startServer = () => {
   const app = express();
   app.use(cors());
   app.use(express.json());
-
+  app.use(cookieParser());
   app.use(logger);
 
+  app.use('/auth', authRouter);
   app.use('/contacts', contactsRouter);
 
   app.use(notFoundHandler);
