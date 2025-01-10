@@ -27,7 +27,7 @@ export const getContactsController = async (req, res) => {
 
 export const getContactsByIdController = async (req, res) => {
   const { _id: userId } = req.user;
-  const { id: _id } = req.params;
+  const { contactId: _id } = req.params;
 
   const data = await contactServices.getContact({ _id, userId });
   if (!data) {
@@ -55,7 +55,7 @@ export const upsertContactController = async (req, res) => {
   const { contactId } = req.params;
   const { _id: userId } = req.user;
   const { isNew, data } = await contactServices.updateContact(
-    contactId,
+    { _id: contactId, userId },
     { ...req.body, userId },
     {
       upsert: true,
@@ -70,7 +70,7 @@ export const upsertContactController = async (req, res) => {
 };
 
 export const patchContactController = async (req, res) => {
-  const { id: _id } = req.params;
+  const { contactId: _id } = req.params;
   const { _id: userId } = req.user;
   const result = await contactServices.updateContact({ _id, userId }, req.body);
 
@@ -85,7 +85,7 @@ export const patchContactController = async (req, res) => {
 };
 
 export const deleteContactController = async (req, res) => {
-  const { id: _id } = req.params;
+  const { contactId: _id } = req.params;
   const { _id: userId } = req.user;
   const data = await contactServices.deleteContact({ _id, userId });
 
